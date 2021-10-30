@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TypeWriter</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #6d8299;
+      }
+      #text {
+        font-size: 1.3em;
+        color: #fff;
+        margin: 200px auto;
+      }
+      span {
+        animation: blinking 1s linear infinite;
+      }
+      @keyframes blinking {
+        50% {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body onload="typeWriting()">
+    <p id="text"></p>
+  </body>
+  <script>
+    let showText = document.getElementById("text");
+    let count = 0;
+    let quote = [
+      "Rain is grace; rain is the sky descending to the earth; without rain, there would be no life.",
+    ];
+
+    function typeWriting() {
+      showText.innerHTML = quote[0].substr(0, count) + "<span>&#x25ae;</span>";
+      count++;
+      if (count < quote[0].length) {
+        setTimeout(typeWriting, 150);
+      }
+    }
+  </script>
+</html>
